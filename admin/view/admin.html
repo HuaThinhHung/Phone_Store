@@ -22,6 +22,44 @@
             opacity: 1;
             pointer-events: auto;
         }
+
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 6px solid #3b82f6;
+            /* blue */
+            border-right: 6px solid #22c55e;
+            /* green */
+            border-bottom: 6px solid #ef4444;
+            /* red */
+            border-left: 6px solid #ec4899;
+            /* pink */
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+            margin: 24px auto;
+            display: block;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -30,7 +68,7 @@
         <!-- Sidebar -->
         <div class="bg-gray-900 text-white w-64 min-h-screen p-4">
             <div class="mb-8">
-                <h1 class="text-2xl font-bold text-center">Admin - Hua Hưng</h1>
+                <h1 class="text-2xl font-bold text-center">Admin Quán Lý Điện Thoại 📱</h1>
             </div>
 
             <nav class="space-y-2">
@@ -85,7 +123,7 @@
             <header class="bg-white shadow-sm border-b border-gray-200 p-4">
                 <div class="flex justify-between items-center max-w-7xl mx-auto">
                     <h2 class="text-2xl font-semibold text-gray-800">Quản Lý Sản Phẩm</h2>
-                    <button onclick="openModal()"
+                    <button id="btnThemSP" onclick="openModal()"
                         class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition duration-200">
                         <i class="fas fa-plus"></i>
                         <span>Thêm Sản Phẩm</span>
@@ -159,66 +197,62 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Loader -->
+                <div style="display: none;" class="loader" id="loader"></div>
                 <!-- Products Table -->
-                <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="tblSanPham bg-white rounded-lg shadow overflow-hidden ">
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
+                        <table class="min-w-full divide-y divide-gray-200 ">
+
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         ID</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Tên Sản Phẩm</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Giá</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Screen</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Màn hình</th>
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Camera sau</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Camera sau
-                                    </th>
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Camera trước</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Camera trước
-                                    </th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Img</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Mô tả
-                                    </th>
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Mô tả</th>
                                     <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Loại sản phẩm
-                                    </th>
+                                        class="border border-gray-300 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Loại sản phẩm</th>
+
                                 </tr>
                             </thead>
-                            <tbody id="productTableBody" class="bg-white divide-y divide-gray-200">
-                                <!-- Products will be inserted here -->
+                            <tbody id="tblSanPham" class="bg-white divide-y divide-gray-200">
                             </tbody>
                         </table>
                     </div>
+                    <br>
                 </div>
             </main>
         </div>
     </div>
 
-    <!-- Modal Products (moved to end of body, outside main content) -->
+    <!-- Modal Products-->
     <div id="productModal"
         class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-60 modal-fade modal-hidden">
         <div class="relative p-6 w-full max-w-2xl bg-white rounded-lg shadow-xl overflow-hidden transform transition-transform duration-300 scale-95"
             id="modalBox">
             <div class="flex items-center justify-between pb-4 border-b rounded-t">
-                <h3 class="text-xl font-semibold text-gray-900">
+                <h3 class="modal-title text-xl font-semibold text-gray-900">
                     Thêm Sản Phẩm Mới
                 </h3>
                 <button onclick="closeModal()" type="button"
@@ -283,17 +317,12 @@
                     </div>
                 </form>
             </div>
-            <div class="flex items-center justify-end pt-4 space-x-2 border-t border-gray-200">
-                <button onclick="closeModal()" type="button"
-                    class="text-gray-500 bg-white hover:bg-gray-100 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900">Hủy</button>
-                <button type="submit" form="productForm"
-                    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Lưu
-                    Sản Phẩm</button>
+            <!-- Modal footer -->
+            <div class="modal-footer flex items-center justify-end pt-4 space-x-2 border-t border-gray-200">
             </div>
         </div>
     </div>
 
-    <!-- JavaScript xử lý modal -->
     <script>
         // Lấy phần tử modal từ DOM bằng ID của nó
         const modal = document.getElementById('productModal');
@@ -315,8 +344,12 @@
             if (e.target === modal) {
                 closeModal();
             }
-        });
+        }); 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"
+        integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./../controller/main.js"></script>
 </body>
 
 </html>
