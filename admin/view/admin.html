@@ -123,7 +123,7 @@
             <header class="bg-white shadow-sm border-b border-gray-200 p-4">
                 <div class="flex justify-between items-center max-w-7xl mx-auto">
                     <h2 class="text-2xl font-semibold text-gray-800">Quản Lý Sản Phẩm</h2>
-                    <button id="btnThemSP" onclick="openModal()"
+                    <button id="btnThemSP" onclick="onOpenAddProduct()"
                         class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition duration-200">
                         <i class="fas fa-plus"></i>
                         <span>Thêm Sản Phẩm</span>
@@ -187,6 +187,7 @@
                                 <option value="phone">Iphone</option>
                                 <option value="laptop">Samsung</option>
                                 <option value="tablet">Xiaomi</option>
+                                <option value="PhuKien">Phụ kiện</option>
                             </select>
                             <select id="sortBy"
                                 class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -311,7 +312,7 @@
                             <option value="">-- Vui lòng chọn loại --</option>
                             <option value="Iphone">Iphone</option>
                             <option value="Samsung">Samsung</option>
-                            <option value="Tablet">Máy tính bảng</option>
+                            <option value="Tablet">Xiaomi</option>
                             <option value="PhuKien">Phụ kiện</option>
                         </select>
                     </div>
@@ -324,28 +325,29 @@
     </div>
 
     <script>
-        // Lấy phần tử modal từ DOM bằng ID của nó
+        // Lấy modal
         const modal = document.getElementById('productModal');
-        const modalBox = document.getElementById('modalBox');
+
+        // Mở modal
         function openModal() {
             modal.classList.remove('modal-hidden');
             modal.classList.add('modal-visible');
-            modalBox.classList.remove('scale-95');
-            modalBox.classList.add('scale-100');
         }
+
+        // Đóng modal
         function closeModal() {
             modal.classList.remove('modal-visible');
             modal.classList.add('modal-hidden');
-            modalBox.classList.remove('scale-100');
-            modalBox.classList.add('scale-95');
         }
 
+        // Click ra ngoài modalBox để đóng
         modal.addEventListener('click', function (e) {
             if (e.target === modal) {
                 closeModal();
             }
-        }); 
+        });
     </script>
+    <!-- Axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"
         integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
