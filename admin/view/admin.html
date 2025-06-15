@@ -184,11 +184,12 @@
                             <select id="typeFilter"
                                 class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Tất cả loại</option>
-                                <option value="phone">Iphone</option>
-                                <option value="laptop">Samsung</option>
-                                <option value="tablet">Xiaomi</option>
-                                <option value="PhuKien">Phụ kiện</option>
+                                <option value="Iphone">Iphone</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Xiaomi">Xiaomi</option>
+                                <option value="Phụ kiện">Phụ kiện</option>
                             </select>
+                            <div class="productList"></div>
                             <select id="sortBy"
                                 class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="name">Sắp xếp theo tên</option>
@@ -352,6 +353,8 @@
         integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="./../controller/main.js"></script>
+    <script type="module" src="./../controller/product.js"></script>
+    <script type="module" src="./../services/product-services.js"></script>
 </body>
 
 </html>
