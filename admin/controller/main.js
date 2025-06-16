@@ -1,12 +1,15 @@
 import ProductServices from "./../services/product-services.js";
 import Product from "./../model/product.js";
-import ProductList from "./../controller/product-list.js";
+import ProductList from "../model/product-list.js";
+import Validation from "../validation/validation.js"
 
+const validation = new Validation();
 const productList = new ProductList();
-const product = new Product();
 const services = new ProductServices();
 
-const getEle = (id) => document.getElementById(id);
+export const getEle = (id) => {
+  return document.getElementById(id);
+};
 
 const getListProduct = () => {
   // pending => Loader display
@@ -108,10 +111,14 @@ document.getElementById("btnThemSP").onclick = function () {
 
   // Bật modal
   document.getElementById("productModal").classList.remove("modal-hidden");
+
+  document.getElementById("id").readOnly = false;
+  document.getElementById("id").value = "";
 };
 
 const getValue = () => {
   // Dom tới các thẻ input  lấy value
+  const id = getEle("id").value;
   const name = getEle("name").value;
   const price = getEle("price").value;
   const screen = getEle("backCamera").value;
@@ -137,28 +144,57 @@ const getValue = () => {
   return product;
 };
 
+const validateProduct = (isEdit = false) => {
+  let isValid = true;
+  const id = getEle("id").value;
+  const name = getEle("name").value;
+  const type = getEle("type").value;
+  const price = getEle("price").value;
+  const img = getEle("img").value;
+
+
+  // Kiểm tra ID chỉ khi thêm mới
+  if (!isEdit) {
+    isValid &= validation.checkEmpty(id, "invalidID", "(*) Vui lòng nhập ID sản phẩm") &&
+      validation.checkIdExist(id, "invalidID", "(*) ID sản phẩm đã tồn tại", productList.products);
+  }
+
+  // Kiểm tra tên sản phẩm
+  isValid &= validation.checkEmpty(name, "invalidName", "(*) Vui lòng nhập tên sản phẩm") &&
+    validation.checkString(name, "invalidName", "(*) Tên sản phẩm không hợp lệ") &&
+    validation.checkCharacterLength(name, "invalidName", "(*) Nhập từ 2 đến 50 ký tự", 2, 50);
+
+  // Kiểm tra giá sản phẩm
+  isValid &= validation.checkEmpty(price, "invalidPrice", "(*) Vui lòng nhập giá sản phẩm") &&
+    validation.checkPrice(price, "invalidPrice", "(*) Giá sản phẩm chỉ được nhập số, từ 2 đến 20 ký số");
+
+  // Kiểm tra link hình ảnh 
+  isValid &= validation.checkEmpty(img, "invalidImg", "(*) Vui lòng nhập link sản phẩm");
+
+  // Kiểm tra loại sản phẩm
+  isValid &= validation.checkSelectOption("type", "invalidType", "(*) Vui lòng chọn loại sản phẩm");
+
+  return isValid;
+};
+
 /**
  * Add Product
  */
 const onAddProduct = () => {
-  const product = getValue();
+  if (!validateProduct()) return;
 
+  const product = getValue();
   const promise = services.addProductAPI(product);
   promise
     .then((result) => {
       console.log(result);
-      // inform success
       alert(`Add product ${result.data.name} success!`);
-      // close modal
       document.getElementsByClassName("close")[0].click();
-      // render list
       getListProduct();
     })
     .catch((error) => {
       console.log(error);
     });
-
-  console.log(product);
 };
 window.onAddProduct = onAddProduct;
 
@@ -172,6 +208,7 @@ const onEditProduct = (id) => {
       const product = result.data;
 
       // Đưa dữ liệu vào các input
+      document.getElementById("id").value = product.id;
       document.getElementById("name").value = product.name;
       document.getElementById("price").value = product.price;
       document.getElementById("img").value = product.image || product.img;
@@ -196,43 +233,36 @@ const onEditProduct = (id) => {
 
       // Mở modal
       openModal();
+
+      document.getElementById("id").readOnly = true;
     })
     .catch((error) => {
       console.error("Lỗi khi lấy sản phẩm:", error);
     });
 };
-
-// Cho phép gọi từ HTML
 window.onEditProduct = onEditProduct;
 
 /**
  * Update Product
  */
-
 const onUpdateProduct = (id) => {
-  console.log(id);
-  // Lấy thông tin mới sửa từ user 
+  if (!validateProduct(true)) return;
+
   const product = getValue();
   product.id = id;
-  console.log(product);
 
   const promise = services.updateProductAPI(product);
-
   promise
     .then((result) => {
       console.log(result);
-
       alert(`Cập nhật thành công ${product.name} success!`);
-
       document.getElementsByClassName("close")[0].click();
-
       getListProduct();
     })
-    .catch((erro) => {
-      console.log(erro);
+    .catch((error) => {
+      console.log(error);
     });
 };
-
 window.onUpdateProduct = onUpdateProduct;
 
 /**

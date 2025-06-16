@@ -12,6 +12,7 @@
     <style>
     </style>
 </head>
+
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
@@ -214,46 +215,60 @@
             <div class="py-6 max-h-[60vh] overflow-y-auto pr-4">
                 <form id="productForm" class="space-y-4">
                     <div>
+                        <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
+                        <input type="text" name="id" id="id"
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Nhập ID">
+                        <div id="invalidID" class="error-message"></div>
+                    </div>
+                    <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Tên sản phẩm</label>
                         <input type="text" name="name" id="name"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập tên sản phẩm...">
+                        <div id="invalidName" class="error-message"></div>
                     </div>
                     <div>
                         <label for="price" class="block text-sm font-medium text-gray-700">Giá</label>
                         <input type="number" name="price" id="price"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập giá sản phẩm...">
+                        <div id="invalidPrice" class="error-message"></div>
                     </div>
                     <div>
                         <label for="screen" class="block text-sm font-medium text-gray-700">Màn hình</label>
                         <input type="text" name="screen" id="screen"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập thông số màn hình...">
+                        <div id="invalidScreen" class="error-message"></div>
                     </div>
                     <div>
                         <label for="backCamera" class="block text-sm font-medium text-gray-700">Camera sau</label>
                         <input type="text" name="backCamera" id="backCamera"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập thông số camera sau...">
+                        <div id="invalidBackCamera" class="error-message"></div>
                     </div>
                     <div>
                         <label for="frontCamera" class="block text-sm font-medium text-gray-700">Camera trước</label>
                         <input type="text" name="frontCamera" id="frontCamera"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập thông số camera trước...">
+                        <div id="invalidFrontCamera" class="error-message"></div>
                     </div>
                     <div>
                         <label for="img" class="block text-sm font-medium text-gray-700">Link hình ảnh</label>
                         <input type="text" name="img" id="img"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Dán URL hình ảnh vào đây...">
+                        <div id="invalidImg" class="error-message"></div>
                     </div>
                     <div>
                         <label for="desc" class="block text-sm font-medium text-gray-700">Mô tả</label>
                         <textarea name="desc" id="desc" rows="3"
                             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Nhập mô tả chi tiết cho sản phẩm..."></textarea>
+                        <div id="invalidDesc" class="error-message"></div>
                     </div>
                     <div>
                         <label for="type" class="block text-sm font-medium text-gray-700">Loại sản phẩm</label>
@@ -265,6 +280,7 @@
                             <option value="Tablet">Xiaomi</option>
                             <option value="PhuKien">Phụ kiện</option>
                         </select>
+                        <div id="invalidType" class="error-message"></div>
                     </div>
                 </form>
             </div>
@@ -305,4 +321,5 @@
     <script type="module" src="./../controller/product.js"></script>
     <script type="module" src="./../services/product-services.js"></script>
 </body>
+
 </html>
