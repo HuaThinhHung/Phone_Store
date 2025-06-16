@@ -8,61 +8,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./../../asset/css/admin.css">
     <style>
-        .modal-fade {
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .modal-visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .loader {
-            border: 6px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 6px solid #3b82f6;
-            /* blue */
-            border-right: 6px solid #22c55e;
-            /* green */
-            border-bottom: 6px solid #ef4444;
-            /* red */
-            border-left: 6px solid #ec4899;
-            /* pink */
-            width: 48px;
-            height: 48px;
-            animation: spin 1s linear infinite;
-            margin: 24px auto;
-            display: block;
-        }
-
-        @-webkit-keyframes spin {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
-
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
@@ -356,5 +305,4 @@
     <script type="module" src="./../controller/product.js"></script>
     <script type="module" src="./../services/product-services.js"></script>
 </body>
-
 </html>
