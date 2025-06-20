@@ -1,7 +1,5 @@
 # 📱 Phone Store
 
-Phone Store
-
 > Dự án website bán điện thoại di động hiện đại, hiển thị sản phẩm, thông tin chi tiết và tương tác người dùng mượt mà. Được xây dựng bằng các công nghệ hiện đại như HTML, CSS, JavaScript.
 
 ---
