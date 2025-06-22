@@ -10,9 +10,9 @@ class ProductList {
 
     let arrFiltered = [];
     for (let i = 0; i < this.products.length; i++) {
-      const product = this.products[i];
-      if (product.type === type) {
-        arrFiltered.push(product);
+      const productType = (this.products[i].type || "").toLowerCase().trim();
+      if (productType === type.toLowerCase().trim()) {
+        arrFiltered.push(this.products[i]);
       }
     }
 

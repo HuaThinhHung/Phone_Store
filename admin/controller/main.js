@@ -19,14 +19,34 @@ const getListProduct = () => {
 
   promise
     .then((result) => {
-      // Lưu dữ liệu vào productList
-      productList.products = result.data;
-      renderListProduct(result.data);
+      // Lưu dữ liệu vào productList, ép id về string
+      productList.products = result.data.map(item => ({
+        ...item,
+        id: String(item.id)
+      }));
+      renderListProduct(productList.products);
+      updateStatsCards(productList.products);
       getEle("loader").style.display = "none";
     })
     .catch((error) => {
       console.log(error);
     });
+};
+
+const updateStatsCards = (products) => {
+  if (!products) return;
+
+  const totalProducts = products.length;
+  const iphoneCount = products.filter(p => (p.type || "").toLowerCase().trim() === 'iphone').length;
+  const samsungCount = products.filter(p => (p.type || "").toLowerCase().trim() === 'samsung').length;
+  const xiaomiCount = products.filter(p => (p.type || "").toLowerCase().trim() === 'xiaomi').length;
+  const phuKienCount = products.filter(p => (p.type || "").toLowerCase().trim() === 'phukien').length;
+
+  getEle('totalProducts').innerText = totalProducts;
+  getEle('phoneCount').innerText = iphoneCount;
+  getEle('samsungCount').innerText = samsungCount;
+  getEle('xiaomiCount').innerText = xiaomiCount;
+  getEle('phuKienCount').innerText = phuKienCount;
 };
 
 const renderListProduct = (data) => {
@@ -36,7 +56,7 @@ const renderListProduct = (data) => {
     const product = data[i];
     contentHTML += `
         <tr>
-            <td class="border border-gray-300 text-center px-2 py-2">${i + 1
+            <td class="border border-gray-300 text-center px-2 py-2">${product.id
       }</td>
             <td class="border border-gray-300 text-center px-2 py-2">${product.name
       }</td>
@@ -60,13 +80,11 @@ const renderListProduct = (data) => {
       }</td>
 
             <td>
-                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="onDeleteProduct(${product.id
-      })">Delete</button>
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="onDeleteProduct('${product.id}')">Delete</button>
             </td>
 
             <td>
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"data-toggle="modal"data-target="#myModal"onclick="onEditProduct(${product.id
-      })">Edit</button>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"data-toggle="modal"data-target="#myModal"onclick="onEditProduct('${product.id}')">Edit</button>
             </td>
             </tr>
         `;
@@ -80,7 +98,7 @@ getListProduct();
  * Delete
  */
 const onDeleteProduct = (id) => {
-  const promise = services.deleteProductAPI(id);
+  const promise = services.deleteProductAPI(String(id));
   promise
     .then((result) => {
       alert(`Delete product success ${result.data.name}`);
@@ -121,7 +139,7 @@ const getValue = () => {
   const id = getEle("id").value;
   const name = getEle("name").value;
   const price = getEle("price").value;
-  const screen = getEle("backCamera").value;
+  const screen = getEle("screen").value;
   const backCamera = getEle("backCamera").value;
   const frontCamera = getEle("frontCamera").value;
   const img = getEle("img").value;
@@ -130,7 +148,7 @@ const getValue = () => {
 
   // Tạo đối tượng từ lớp đối tượng
   const product = new Product(
-    "",
+    id,
     name,
     price,
     screen,
@@ -156,7 +174,7 @@ const validateProduct = (isEdit = false) => {
   // Kiểm tra ID chỉ khi thêm mới
   if (!isEdit) {
     isValid &= validation.checkEmpty(id, "invalidID", "(*) Vui lòng nhập ID sản phẩm") &&
-      validation.checkIdExist(id, "invalidID", "(*) ID sản phẩm đã tồn tại", productList.products);
+      validation.checkIdExist(String(id), "invalidID", "(*) ID sản phẩm đã tồn tại", productList.products);
   }
 
   // Kiểm tra tên sản phẩm
@@ -203,7 +221,7 @@ window.onAddProduct = onAddProduct;
  */
 const onEditProduct = (id) => {
   // Gọi API lấy chi tiết sản phẩm theo ID
-  services.getProductById(id)
+  services.getProductById(String(id))
     .then((result) => {
       const product = result.data;
 
@@ -211,12 +229,11 @@ const onEditProduct = (id) => {
       document.getElementById("id").value = product.id;
       document.getElementById("name").value = product.name;
       document.getElementById("price").value = product.price;
-      document.getElementById("img").value = product.image || product.img;
-      document.getElementById("desc").value = product.description;
+      document.getElementById("img").value = product.img;
+      document.getElementById("desc").value = product.desc;
       document.getElementById("screen").value = product.screen;
       document.getElementById("backCamera").value = product.backCamera;
       document.getElementById("frontCamera").value = product.frontCamera;
-      document.getElementById("desc").value = product.desc;
       document.getElementById("type").value = product.type;
 
       // Cập nhật tiêu đề modal
@@ -249,7 +266,7 @@ const onUpdateProduct = (id) => {
   if (!validateProduct(true)) return;
 
   const product = getValue();
-  product.id = id;
+  product.id = String(id);
 
   const promise = services.updateProductAPI(product);
   promise

@@ -84,10 +84,10 @@
             <!-- Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
                 <!-- Stats Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                     <div class="bg-white rounded-lg shadow p-6">
                         <div class="flex items-center">
-                            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                            <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
                                 <i class="fas fa-box text-xl"></i>
                             </div>
                             <div class="ml-4">
@@ -109,12 +109,34 @@
                     </div>
                     <div class="bg-white rounded-lg shadow p-6">
                         <div class="flex items-center">
-                            <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
                                 <i class="fas fa-tablet-alt text-xl"></i>
                             </div>
                             <div class="ml-4">
                                 <p class="text-sm font-medium text-gray-600">Samsung</p>
-                                <p class="text-2xl font-semibold text-gray-900" id="tabletCount">0</p>
+                                <p class="text-2xl font-semibold text-gray-900" id="samsungCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-100 text-red-600">
+                                <i class="fas fa-microchip text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Xiaomi</p>
+                                <p class="text-2xl font-semibold text-gray-900" id="xiaomiCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                                <i class="fas fa-headphones-alt text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Phụ Kiện</p>
+                                <p class="text-2xl font-semibold text-gray-900" id="phuKienCount">0</p>
                             </div>
                         </div>
                     </div>
@@ -137,7 +159,7 @@
                                 <option value="Iphone">Iphone</option>
                                 <option value="Samsung">Samsung</option>
                                 <option value="Xiaomi">Xiaomi</option>
-                                <option value="Phụ kiện">Phụ kiện</option>
+                                <option value="PhuKien">Phụ kiện</option>
                             </select>
                             <div class="productList"></div>
                             <select id="sortBy"
@@ -277,7 +299,7 @@
                             <option value="">-- Vui lòng chọn loại --</option>
                             <option value="Iphone">Iphone</option>
                             <option value="Samsung">Samsung</option>
-                            <option value="Tablet">Xiaomi</option>
+                            <option value="Xiaomi">Xiaomi</option>
                             <option value="PhuKien">Phụ kiện</option>
                         </select>
                         <div id="invalidType" class="error-message"></div>
