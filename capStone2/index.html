@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- style  -->
+    <link rel="stylesheet" href="./public/css/index.css">
+    <!-- tailwind   -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+    <!-- flowbie  -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- font icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- header  -->
+    <header id="header">
+        <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-4 p-4">
+                <a href="./index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="./public/imgs/logo-cultured-kid.png" class="h-8" alt="Flowbite Logo">
+
+                </a>
+                <div class="flex md:order-2 items-center space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <a href="./admin/admin.html"><i class="fa-regular fa-user px-2 w-[100%] fa-lg"></i></a>
+                    <a href="./shopingCard.html"><button type="button"> <i id="SLSP"
+                                class="fa-solid fa-cart-shopping fa-lg px-2 relative w-[100%]"
+                                data-count="0"></i></button></a>
+
+                    <button data-collapse-toggle="navbar-sticky" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0   dark:border-gray-700">
+                        <li>
+                            <a href="#"
+                                class="block font-karla md:hidden py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0   dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700 uppercase">login</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700 uppercase">samsung</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700 uppercase">apble</a>
+                        </li>
+
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 hidden uppercase text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                                aria-current="page">logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Carousel -->
+    <section class="max-w-screen-xl flex flex-wrap items-center justify-between mx-4 ">
+        <div id="default-carousel" class="relative w-full -z-1" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                <!-- Item 1 -->
+                <div class="hidden duration-700 rounded-lg ease-in-out" data-carousel-item>
+                    <img src="./public/imgs/dt1.webp"
+                        class="absolute block w-full -translate-x-1/2 rounded-lg -translate-y-1/2 top-1/2 left-1/2"
+                        alt="...">
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 rounded-lg ease-in-out" data-carousel-item>
+                    <img src="./public/imgs/dt2.webp"
+                        class="absolute block w-full -translate-x-1/2 rounded-lg -translate-y-1/2 top-1/2 left-1/2"
+                        alt="...">
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 rounded-lg ease-in-out" data-carousel-item>
+                    <img src="./public/imgs/dt3.webp"
+                        class="absolute block w-full -translate-x-1/2 rounded-lg -translate-y-1/2 top-1/2 left-1/2"
+                        alt="...">
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 rounded-lg ease-in-out" data-carousel-item>
+                    <img src="./public/imgs/dt4.webp"
+                        class="absolute block w-full -translate-x-1/2 rounded-lg -translate-y-1/2 top-1/2 left-1/2"
+                        alt="...">
+                </div>
+                <!-- Item 5 -->
+                <div class="hidden duration-700 rounded-lg ease-in-out" data-carousel-item>
+                    <img src="./public/imgs/dt5.webp"
+                        class="absolute block w-full -translate-x-1/2 rounded-lg -translate-y-1/2 top-1/2 left-1/2"
+                        alt="...">
+                </div>
+            </div>
+            <!-- Slider indicators -->
+            <div
+                class="absolute z-30 flex -translate-x-1/2 bottom-5  -translate-y-10 space left-1/2 space-x-3 rtl:space-x-reverse">
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                    data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                    data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                    data-carousel-slide-to="2"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                    data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                    data-carousel-slide-to="4"></button>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- imgs thương hiệu  -->
+    <section class="max-w-screen-xl flex flex-wrap items-center justify-center mx-4 ">
+        <div class="flex justify-evenly overflow-x-auto overflow-hidden no-scrollbar  mb-8 ">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone1.webp" alt="">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone2.webp" alt="">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone3.webp" alt="">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone4.webp" alt="">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone5.webp" alt="">
+            <img class="max-h-[150px] mx-4 max-w-xs rounded-lg" src="./public/imgs/iphone1.webp" alt="">
+        </div>
+    </section>
+    <!-- list card product  -->
+    <section class="max-w-screen-xl flex flex-wrap items-center justify-between mx-4 p-4">
+        <div class="w-full">
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center">
+                    <i class="fa-brands fa-apple fa-3x "></i>
+                    <article class="p-2">
+                        <h1 class="font-medium text-xl">New collection</h1>
+                        <h6 class="text-[8px] text-gray-500">Apple iPhone 14 series</h6>
+                    </article>
+                </div>
+                <div>
+                    <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="500"
+                        data-dropdown-trigger="hover"
+                        class="text-gray-900 border border-black    font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center "
+                        type="button">Lọc thương hiệu <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownDelay"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDelayButton">
+                            <li>
+                                <a href="#" onclick="filterType('Samsung')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Samsung</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="filterType('Iphone')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Iphone</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <main id="listProductCard" class="flex-wrap  flex mt-12 gap-4 justify-center">
+
+            </main>
+            <div id="pagination" class="flex justify-center p-4">
+
+            </div>
+        </div>
+    </section>
+    <!-- footer  -->
+    <footer id="footer" class="max-w-screen-xl flex flex-wrap items-center justify-between mx-4 "></footer>
+
+
+
+    <!-- js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/axios.min.js"
+        integrity="sha512-WkZrEcQ5LMyNy6Y2PQf+Tu3vMcsmKKRKuPXtJSTHQJ3mpuvLRlA5dlDDhrrcXfyWr6Z/y3wIMfjfqVFO/gDZYQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./js/main.js"> </script>
+    <script type="module" src="./js/render.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>

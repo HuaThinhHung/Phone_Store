@@ -1,0 +1,11 @@
+let listCard =[];
+getinfoCard =()=>{
+    
+}
+
+
+
+
+
+
+
