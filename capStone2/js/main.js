@@ -86,6 +86,7 @@ window.createPro = (e) => {
         .then((result) => {
             renderListProduct();
             closeModalEdit();
+            alert("Thêm sản phẩm thành công");
         }).catch((err) => {
             alert(err);
         });
@@ -379,6 +380,7 @@ window.TT = function () {
     getEle("priceName").placeholder = '';
     getEle("sumPrice").placeholder = 0;
     renderShopingProduct();
+    alert("Thanh toán thành công")
 }
 
 window.renderListProduct = () => {
