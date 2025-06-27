@@ -293,7 +293,7 @@ const renderShopingProduct = () => {
                         </svg>
                     </button>
                     <input type="text" id="counter-input-${countPro.id}" data-input-counter
-                        class="shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+                        class="shrink-0 text-gray-900  border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
                         placeholder="" value="${countPro.count}" required />
                     <button type="button" id="increment-button" onclick="increase('${countPro.id}')" data-input-counter-increment="counter-input-${countPro.id}"
                         class="shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
